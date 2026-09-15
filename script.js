@@ -23,6 +23,7 @@ const year = document.querySelector("#year");
    ========================================================= */
 
 function closeMobileMenu() {
+
   if (!menuButton || !mobileMenu) {
     return;
   }
