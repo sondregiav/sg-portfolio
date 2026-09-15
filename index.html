@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sondre Giæver — front-end developer portfolio.">
+  <title>Sondre G — Front-End Developer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-shell">
+
+    <header class="site-header">
+      <a class="logo" href="#top" aria-label="Sondre G home">SG<span>.</span></a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-button theme-toggle" type="button" aria-label="Toggle light mode">
+          <span class="sun-icon">☼</span>
+        </button>
+        <button class="icon-button menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <main id="top">
+      <section class="hero section-grid">
+        <div class="hero-inner">
+          <p class="eyebrow reveal">FRONT-END DEVELOPER</p>
+
+          <h1 class="hero-title reveal">
+            <span>I build</span>
+            <strong>clean digital<br>experiences.</strong>
+          </h1>
+
+          <p class="hero-copy reveal">
+            I'm Sondre, a front-end developer focused on building responsive
+            websites and practical web applications with HTML, CSS and JavaScript.
+          </p>
+
+          <div class="hero-actions reveal">
+            <a class="button button-primary" href="#work">View my work <span>↗</span></a>
+            <a class="button button-secondary" href="#contact">Get in touch</a>
+          </div>
+
+          <div class="skill-strip reveal" aria-label="Core skills">
+            <div>
+              <strong>HTML</strong>
+              <span>Semantic structure</span>
+            </div>
+            <div>
+              <strong>CSS</strong>
+              <span>Responsive interfaces</span>
+            </div>
+            <div>
+              <strong>JS</strong>
+              <span>Interactive experiences</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-grid" id="work">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">SELECTED WORK</p>
+            <h2>Things I've built.</h2>
+            <p>Practical projects designed to solve problems and demonstrate real front-end skills.</p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card reveal">
+              <div class="project-visual project-one"><span>01</span></div>
+              <div class="project-body">
+                <p class="project-type">WEB APPLICATION</p>
+                <h3>Personal Dashboard</h3>
+                <p>A responsive dashboard with tasks, notes, statistics and persistent browser data.</p>
+                <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                <a href="#" class="text-link">View project ↗</a>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-visual project-two"><span>02</span></div>
+              <div class="project-body">
+                <p class="project-type">WEB APP</p>
+                <h3>Shopping List</h3>
+                <p>A simple, mobile-friendly shopping list focused on speed, clarity and usability.</p>
+                <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                <a href="#" class="text-link">View project ↗</a>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-visual project-three"><span>03</span></div>
+              <div class="project-body">
+                <p class="project-type">BUSINESS WEBSITE</p>
+                <h3>Nordic Electric</h3>
+                <p>A professional fictional business website with services, testimonials, FAQ and contact form.</p>
+                <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                <a href="#" class="text-link">View project ↗</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-grid about-section" id="about">
+        <div class="container about-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow">ABOUT ME</p>
+            <h2>I care about the details.</h2>
+          </div>
+          <div class="about-copy reveal">
+            <p>
+              I'm an intermediate front-end developer who enjoys turning ideas
+              into clean, responsive and useful web experiences.
+            </p>
+            <p>
+              I work primarily with HTML, CSS and vanilla JavaScript, with a
+              strong focus on responsive design, accessibility, maintainable
+              code and practical user interfaces.
+            </p>
+            <p>
+              My goal is simple: build websites and applications that look
+              professional, feel intuitive and work well across devices.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-grid" id="skills">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">SKILLS & TOOLS</p>
+            <h2>My toolkit.</h2>
+          </div>
+
+          <div class="skills-list">
+            <div class="skill-row reveal"><span>01</span><strong>HTML5</strong><em>Semantic, accessible structure</em></div>
+            <div class="skill-row reveal"><span>02</span><strong>CSS3</strong><em>Responsive layouts & UI design</em></div>
+            <div class="skill-row reveal"><span>03</span><strong>JavaScript</strong><em>Interactions & web applications</em></div>
+            <div class="skill-row reveal"><span>04</span><strong>Git & GitHub</strong><em>Version control & deployment</em></div>
+            <div class="skill-row reveal"><span>05</span><strong>GitHub Pages</strong><em>Static site deployment</em></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section section-grid" id="contact">
+        <div class="container contact-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow">CONTACT</p>
+            <h2>Let's build something useful.</h2>
+            <p>Have a project, opportunity or idea? I'd be happy to hear from you.</p>
+          </div>
+
+          <form class="contact-form reveal" id="contact-form">
+            <label>
+              Name
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <button class="button button-primary" type="submit">Send message <span>↗</span></button>
+            <p class="form-message" id="form-message" role="status"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="logo" href="#top">SG<span>.</span></a>
+        <p>Front-end developer building clean digital experiences.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/sondregiav/" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="mailto:sondregiav@gmail.com">Email ↗</a>
+      </div>
+      <p class="copyright">© <span id="year"></span> Sondre G</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
