@@ -7,15 +7,23 @@
    ELEMENTS
    ========================================================= */
 
-const menuButton = document.querySelector(".menu-toggle");
-const mobileMenu = document.querySelector(".mobile-menu");
+const menuButton =
+  document.querySelector(".menu-toggle");
 
-const themeButton = document.querySelector(".theme-toggle");
+const mobileMenu =
+  document.querySelector(".mobile-menu");
 
-const form = document.querySelector("#contact-form");
-const formMessage = document.querySelector("#form-message");
+const themeButton =
+  document.querySelector(".theme-toggle");
 
-const year = document.querySelector("#year");
+const form =
+  document.querySelector("#contact-form");
+
+const formMessage =
+  document.querySelector("#form-message");
+
+const year =
+  document.querySelector("#year");
 
 
 /* =========================================================
@@ -38,33 +46,44 @@ function closeMobileMenu() {
     "Open menu"
   );
 
-  mobileMenu.classList.remove("open");
+  mobileMenu.classList.remove(
+    "open"
+  );
+
 }
 
 
-menuButton?.addEventListener("click", () => {
+menuButton?.addEventListener(
+  "click",
+  () => {
 
-  const isOpen =
-    menuButton.getAttribute("aria-expanded") === "true";
+    const isOpen =
+      menuButton.getAttribute(
+        "aria-expanded"
+      ) === "true";
 
-  menuButton.setAttribute(
-    "aria-expanded",
-    String(!isOpen)
-  );
 
-  menuButton.setAttribute(
-    "aria-label",
-    isOpen
-      ? "Open menu"
-      : "Close menu"
-  );
+    menuButton.setAttribute(
+      "aria-expanded",
+      String(!isOpen)
+    );
 
-  mobileMenu?.classList.toggle(
-    "open",
-    !isOpen
-  );
 
-});
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen
+        ? "Open menu"
+        : "Close menu"
+    );
+
+
+    mobileMenu?.classList.toggle(
+      "open",
+      !isOpen
+    );
+
+  }
+);
 
 
 document
@@ -81,13 +100,16 @@ document
 
 /* Close mobile menu with Escape */
 
-document.addEventListener("keydown", event => {
+document.addEventListener(
+  "keydown",
+  event => {
 
-  if (event.key === "Escape") {
-    closeMobileMenu();
+    if (event.key === "Escape") {
+      closeMobileMenu();
+    }
+
   }
-
-});
+);
 
 
 /* =========================================================
@@ -100,7 +122,9 @@ const savedTheme =
 
 if (savedTheme === "light") {
 
-  document.body.classList.add("light");
+  document.body.classList.add(
+    "light"
+  );
 
 }
 
@@ -112,7 +136,10 @@ function updateThemeLabel() {
   }
 
   const isLight =
-    document.body.classList.contains("light");
+    document.body.classList.contains(
+      "light"
+    );
+
 
   themeButton.setAttribute(
     "aria-label",
@@ -127,23 +154,33 @@ function updateThemeLabel() {
 updateThemeLabel();
 
 
-themeButton?.addEventListener("click", () => {
+themeButton?.addEventListener(
+  "click",
+  () => {
 
-  document.body.classList.toggle("light");
+    document.body.classList.toggle(
+      "light"
+    );
 
-  const theme =
-    document.body.classList.contains("light")
-      ? "light"
-      : "dark";
 
-  localStorage.setItem(
-    "sg-theme",
-    theme
-  );
+    const theme =
+      document.body.classList.contains(
+        "light"
+      )
+        ? "light"
+        : "dark";
 
-  updateThemeLabel();
 
-});
+    localStorage.setItem(
+      "sg-theme",
+      theme
+    );
+
+
+    updateThemeLabel();
+
+  }
+);
 
 
 /* =========================================================
@@ -151,7 +188,9 @@ themeButton?.addEventListener("click", () => {
    ========================================================= */
 
 const revealItems =
-  document.querySelectorAll(".reveal");
+  document.querySelectorAll(
+    ".reveal"
+  );
 
 
 if (
@@ -168,9 +207,11 @@ if (
             return;
           }
 
+
           entry.target.classList.add(
             "visible"
           );
+
 
           observer.unobserve(
             entry.target
@@ -195,7 +236,9 @@ if (
 
   revealItems.forEach(item => {
 
-    item.classList.add("visible");
+    item.classList.add(
+      "visible"
+    );
 
   });
 
@@ -203,35 +246,126 @@ if (
 
 
 /* =========================================================
-   CONTACT FORM
+   CONTACT FORM — FORMSPREE
    ========================================================= */
 
 form?.addEventListener(
   "submit",
-  event => {
+  async event => {
 
     event.preventDefault();
 
-    const data =
+
+    const submitButton =
+      form.querySelector(
+        'button[type="submit"]'
+      );
+
+
+    const formData =
       new FormData(form);
 
-    const name =
-      String(
-        data.get("name") || ""
-      ).trim();
 
+    /* Disable button while sending */
 
-    if (formMessage) {
+    if (submitButton) {
 
-      formMessage.textContent =
-        `Thanks${name ? `, ${name}` : ""}! ` +
-        `Your message is ready to connect ` +
-        `to a real email service.`;
+      submitButton.disabled = true;
+
+      submitButton.innerHTML =
+        `Sending... <span>↗</span>`;
 
     }
 
 
-    form.reset();
+    /* Clear previous message */
+
+    if (formMessage) {
+
+      formMessage.textContent = "";
+
+      formMessage.className =
+        "form-message";
+
+    }
+
+
+    try {
+
+      const response =
+        await fetch(
+          form.action,
+          {
+            method: "POST",
+
+            body: formData,
+
+            headers: {
+              Accept: "application/json"
+            }
+          }
+        );
+
+
+      /* Treat non-2xx responses as errors */
+
+      if (!response.ok) {
+
+        throw new Error(
+          "Form submission failed."
+        );
+
+      }
+
+
+      /* Successful submission */
+
+      if (formMessage) {
+
+        formMessage.textContent =
+          "Message sent successfully. Thanks for reaching out!";
+
+        formMessage.classList.add(
+          "success"
+        );
+
+      }
+
+
+      /* Clear the form */
+
+      form.reset();
+
+
+    } catch (error) {
+
+      /* Submission failed */
+
+      if (formMessage) {
+
+        formMessage.textContent =
+          "Something went wrong. Please try again or email me directly.";
+
+        formMessage.classList.add(
+          "error"
+        );
+
+      }
+
+    } finally {
+
+      /* Re-enable button */
+
+      if (submitButton) {
+
+        submitButton.disabled = false;
+
+        submitButton.innerHTML =
+          `Send message <span>↗</span>`;
+
+      }
+
+    }
 
   }
 );
