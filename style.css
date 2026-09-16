@@ -824,6 +824,75 @@ span:last-child {
 
 
 /* =========================================================
+   REAL PROJECT IMAGES
+   ========================================================= */
+
+.real-project-image {
+  padding: 0;
+  display: block;
+  background: #0b0d0e;
+}
+
+.real-project-frame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef1ed;
+}
+
+.real-project-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+.real-project-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.case-study-featured .real-project-frame {
+  min-height: 430px;
+}
+
+.case-study-small .real-project-frame {
+  min-height: 330px;
+}
+
+.case-study-image-label {
+  position: absolute;
+  left: 22px;
+  bottom: 20px;
+  z-index: 4;
+  max-width: calc(100% - 44px);
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(8, 9, 10, 0.78);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  backdrop-filter: blur(12px);
+}
+
+.shopping-image-frame {
+  background: #f1f3ef;
+}
+
+
+/* =========================================================
    CASE STUDY NUMBER
    ========================================================= */
 
@@ -1823,205 +1892,61 @@ span:last-child {
    SKILLS
    ========================================================= */
 
-.section-inner {
-  width: min(100% - 40px, var(--max));
-  margin-inline: auto;
+.skills-list {
+  border-top:
+    1px solid
+    var(--line);
 }
 
-.skills-section {
-  padding-block: 110px;
+.skill-row {
+  display:
+    grid;
+
+  grid-template-columns:
+    45px
+    1fr;
+
+  gap:
+    12px;
+
+  align-items:
+    center;
+
+  padding:
+    25px 0;
+
+  border-bottom:
+    1px solid
+    var(--line);
 }
 
-.skills-header {
-  display: grid;
-  gap: 28px;
-  margin-bottom: 55px;
+.skill-row > span {
+  color:
+    var(--muted-2);
+
+  font-size:
+    13px;
 }
 
-.section-eyebrow {
-  margin: 0 0 18px;
-  color: var(--lime);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.24em;
+.skill-row strong {
+  font-size:
+    23px;
 }
 
-.section-title {
-  margin: 0;
-  font-size: clamp(3.6rem, 13vw, 7rem);
-  line-height: 0.88;
-  letter-spacing: -0.075em;
+.skill-row em {
+  grid-column:
+    2;
+
+  color:
+    var(--muted);
+
+  font-size:
+    15px;
+
+  font-style:
+    normal;
 }
 
-.section-title span {
-  color: var(--lime);
-}
-
-.skills-intro {
-  max-width: 520px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.65;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.skill-card {
-  position: relative;
-  min-height: 300px;
-  padding: 28px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    background 0.25s ease;
-}
-
-.skill-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 2px;
-  background: var(--lime);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
-}
-
-.skill-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--line-strong);
-  background: var(--surface-2);
-}
-
-.skill-card:hover::before {
-  transform: scaleX(1);
-}
-
-.skill-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.skill-number {
-  color: var(--muted-2);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
-.skill-icon {
-  min-width: 44px;
-  height: 44px;
-  padding-inline: 8px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--line-strong);
-  border-radius: 12px;
-  color: var(--lime);
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.skill-card-body {
-  margin-top: 50px;
-}
-
-.skill-card-body h3 {
-  margin: 0 0 12px;
-  font-size: 1.8rem;
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.skill-card-body p {
-  max-width: 430px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 20px;
-}
-
-.skill-tags span {
-  padding: 6px 9px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--muted-2);
-  font-size: 11px;
-  line-height: 1;
-}
-
-.skills-focus {
-  margin-top: 12px;
-  padding: 30px;
-  display: grid;
-  gap: 36px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-}
-
-.skills-focus-title h3 {
-  max-width: 620px;
-  margin: 0;
-  font-size: clamp(2.2rem, 7vw, 4.2rem);
-  line-height: 0.95;
-  letter-spacing: -0.065em;
-}
-
-.skills-focus-title h3 span {
-  color: var(--muted-2);
-}
-
-.focus-list {
-  border-top: 1px solid var(--line);
-}
-
-.focus-item {
-  display: grid;
-  grid-template-columns: 36px 1fr;
-  gap: 16px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.focus-item > span {
-  color: var(--muted-2);
-  font-size: 11px;
-  padding-top: 3px;
-}
-
-.focus-item strong {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 15px;
-}
-
-.focus-item p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.55;
-}
 
 /* =========================================================
    CONTACT
@@ -2099,31 +2024,7 @@ span:last-child {
     24px;
 
   color:
-    var(--muted);
-
-  font-size:
-    0.85rem;
-
-  line-height:
-    1.5;
-}
-
-.form-message.success {
-  color:
     var(--lime);
-}
-
-.form-message.error {
-  color:
-    #ff6b6b;
-}
-
-#contact-form button:disabled {
-  opacity:
-    0.6;
-
-  cursor:
-    wait;
 }
 
 
@@ -2518,6 +2419,10 @@ span:last-child {
       620px;
   }
 
+  .case-study-featured .real-project-frame {
+    min-height: 620px;
+  }
+
   .case-study-featured
   .case-study-content {
     padding:
@@ -2537,6 +2442,10 @@ span:last-child {
   .case-study-visual {
     min-height:
       380px;
+  }
+
+  .case-study-small .real-project-frame {
+    min-height: 380px;
   }
 
   .case-study-small
@@ -2646,6 +2555,22 @@ span:last-child {
       320px;
   }
 
+  .real-project-frame {
+    min-height: 300px;
+  }
+
+  .case-study-featured .real-project-frame,
+  .case-study-small .real-project-frame {
+    min-height: 320px;
+  }
+
+  .case-study-image-label {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: none;
+  }
+
   .visual-window {
     width:
       94%;
@@ -2683,55 +2608,51 @@ span:last-child {
   }
 
 }
-
 /* =========================================================
-   SKILLS RESPONSIVE LAYOUT
+   WORK — PREMIUM CASE STUDY LAYOUT
    ========================================================= */
 
-@media (min-width: 700px) {
-  .section-inner {
-    width: min(100% - 60px, var(--max));
-  }
+.case-study-grid {
+  display: grid;
+  gap: 22px;
+}
 
-  .skills-header {
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
-    align-items: end;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .skill-card-wide {
-    grid-column: span 2;
-  }
-
-  .skills-focus {
-    padding: 40px;
-  }
+.case-study-grid .case-study-small {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 @media (min-width: 980px) {
-  .section-inner {
-    width: min(100% - 80px, var(--max));
+  .case-study-grid .case-study-small {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: stretch;
   }
 
-  .skill-card {
-    min-height: 330px;
-    padding: 34px;
+  .case-study-grid .case-study-small:nth-child(even) {
+    grid-template-columns: 0.95fr 1.05fr;
   }
 
-  .skills-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .case-study-grid .case-study-small:nth-child(even) .case-study-visual {
+    order: 2;
   }
 
-  .skill-card-wide {
-    grid-column: span 2;
+  .case-study-grid .case-study-small:nth-child(even) .case-study-content {
+    order: 1;
   }
 
-  .skills-focus {
-    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
-    align-items: start;
-    padding: 48px;
+  .case-study-grid .case-study-small .case-study-visual,
+  .case-study-grid .case-study-small .real-project-frame {
+    min-height: 560px;
+  }
+
+  .case-study-grid .case-study-small .case-study-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+  }
+
+  .case-study-grid .case-study-small .case-study-header h3 {
+    font-size: 3rem;
   }
 }
